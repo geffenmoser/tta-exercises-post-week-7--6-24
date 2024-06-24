@@ -44,3 +44,5 @@ plt.title('Total Revenue Generated in Each Quarter')
 plt.xlabel('Quarter')
 plt.ylabel('Total Revenue')
 plt.show()
+
+#exercise 5 to do

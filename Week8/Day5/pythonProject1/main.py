@@ -5,7 +5,7 @@
 
 import pandas as pd
 import matplotlib.pyplot as plt
-import seaborn as sns
+import numpy as np
 
 # #exercise 2
 # week_temps = {
@@ -45,4 +45,34 @@ plt.xlabel('Quarter')
 plt.ylabel('Total Revenue')
 plt.show()
 
-#exercise 5 to do
+#exercise 5
+x = np.arange(-10, 11, 1)
+y = x**2
+
+plt.figure(figsize=(8, 6))
+plt.plot(x, y, label='y = x^2')
+plt.title('Plot of y = x^2')
+plt.xlabel('x')
+plt.ylabel('y')
+plt.legend()
+plt.grid(True)
+plt.show()
+
+products = ['A', 'B', 'C', 'D']
+sales = [15, 30, 45, 20]
+plt.figure(figsize=(8, 6))
+plt.bar(products, sales, color=['blue', 'orange', 'green', 'red'])
+plt.title('Weekly Sales of Products')
+plt.xlabel('Products')
+plt.ylabel('Sales')
+plt.show()
+
+fruits = ['Apples', 'Bananas', 'Cherries', 'Dates']
+percentages = [40, 30, 20, 10]
+colors = ['red', 'yellow', 'pink', 'brown']
+plt.figure(figsize=(8, 6))
+plt.pie(percentages, labels=fruits, colors=colors, autopct='%1.1f%%', startangle=140)
+plt.title('Favorite Fruits')
+plt.legend(fruits, loc="best")
+plt.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
+plt.show()

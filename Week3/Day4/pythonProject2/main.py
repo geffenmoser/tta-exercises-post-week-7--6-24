@@ -1,3 +1,4 @@
+
 class Pets():
     def __init__(self, animals):
         self.animals = animals
@@ -28,16 +29,17 @@ class Siamese(Cat):
     def attack(self, victim):
         return f"{victim} has been bitten"
 
-a = Bengal
-b = Siamese
-c = Chartreux
+a = Bengal("Simba", 3)
+b = Siamese("Nala", 2)
+c = Chartreux("Milo", 1)
 all_cats = [a, b, c]
 sara_pets = Pets(all_cats)
 sara_pets.walk()
 
 #exercise 2
 class Dog():
-    def __init__(self, weight, age):
+    def __init__(self, name, weight, age):
+        self.name = name
         self.weight = weight
         self.age = age
 
@@ -49,12 +51,13 @@ class Dog():
 
     def fight(self, other_dog):
         if self.run_speed() > other_dog.run_speed():
-            return f"{self} won"
+            return f"{self.name} won"
         else:
-            return f"{other_dog} won"
-Rex = Dog(10,10)
-Toby = Dog(5,5)
-Clifford = Dog(100, 2)
+            return f"{other_dog.name} won"
+
+Rex = Dog("Rex", 10,10)
+Toby = Dog("Toby", 5,5)
+Clifford = Dog("Clifford", 100, 2)
 
 print(Dog.fight(Toby, Clifford))
 

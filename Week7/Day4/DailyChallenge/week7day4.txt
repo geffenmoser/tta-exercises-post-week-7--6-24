@@ -1,0 +1,55 @@
+!pip install kaggle
+from google.colab import files
+
+uploaded = files.upload()
+
+for fn in uploaded.keys():
+  print('User uploaded file "{name}" with length {length} bytes'.format(
+      name=fn, length=len(uploaded[fn])))
+
+# Then move kaggle.json into the folder where the API expects to find it.
+!mkdir -p ~/.kaggle/ && mv kaggle.json ~/.kaggle/ && chmod 600 ~/.kaggle/kaggle.json
+!kaggle datasets download -d olgabelitskaya/flower-color-images
+!unzip flower-color-images`.zip
+
+
+import matplotlib.pyplot as plt
+from PIL import Image, ImageOps
+
+image_path = 'flowers/flowers/17_031.png'
+image = Image.open(image_path) 
+
+# Rotate the image by 90 degrees
+rotated_image = image.rotate(90)
+
+# Flip the image horizontally and then vertically
+flipped_image = ImageOps.mirror(image)
+flipped_image = ImageOps.flip(flipped_image)
+
+# Zoom in on the image (scale by 1.2x)
+width, height = image.size
+zoomed_image = image.resize((int(width * 1.2), int(height * 1.2)))
+
+# Function provided
+def show_images(original, augmented, title):
+    plt.figure(figsize=(12, 6))
+    plt.subplot(1, 2, 1)
+    plt.imshow(original)
+    plt.title('Original Image')
+    plt.axis('off')
+
+    plt.subplot(1, 2, 2)
+    plt.imshow(augmented)
+    plt.title(title)
+    plt.axis('off')
+
+    plt.show()
+
+# Display original and rotated image
+show_images(image, rotated_image, "Rotated Image")
+
+# Display original and flipped image
+show_images(image, flipped_image, "Flipped Image")
+
+# Display original and zoomed image
+show_images(image, zoomed_image, "Zoomed Image")
